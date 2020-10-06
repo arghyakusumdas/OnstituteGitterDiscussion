@@ -5,12 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sidecar Basic Example</title>
 
-  <link href="../common.css" rel="stylesheet">
+  <link href="./common.css" rel="stylesheet">
+  <link rel="stylesheet" href="./font-awesome.min.css">
+
+<style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {border-radius: 2px;}
+.button2 {border-radius: 4px;}
+.button3 {border-radius: 8px;}
+.button4 {border-radius: 12px;}
+.button5 {border-radius: 50%;}
+</style>
+
 </head>
 <body>
   <div class="js-sidecar-status">... waiting for Sidecar</div>
-  <button class="js-destroy-chat-button">Destroy Chat</button>
-  <button class="js-create-chat-button">Create Chat</button>
+  <table>
+    <tr>
+      <td><i class="fab fa-gitter" style="font-size:40px"></i></td>
+      <td><button id="buttonProceed" class="button button1">Proceed</button></td>
+      <td><button id="buttonEnd" class="button button1">End</button></td>
+    </tr>
+  </table>
 
   <script>
     ((window.gitter = {}).chat = {}).options = {
@@ -22,10 +50,10 @@
   <script>
     document.addEventListener('gitter-sidecar-ready', function(e) {
       var GitterChat = e.detail.Chat;
-      document.querySelector('.js-sidecar-status').innerHTML = 'Click Open chat at bottom right corner';
+      document.querySelector('.js-sidecar-status').innerHTML = 'Discussion forum is hosted on Gitter. Please do not leave any private information';
 
       var chat;
-      document.querySelector('.js-create-chat-button').addEventListener('click', function(e) {
+      document.getElementById('buttonProceed').addEventListener('click', function(e) {
         console.log('Create');
         roomName = 'onstituter/community';
         roomName = getParameterByName('foo'); //// query string: ?foo=lorem&bar=&baz
@@ -35,24 +63,12 @@
         });
       });
 
-      document.querySelector('.js-destroy-chat-button').addEventListener('click', function(e) {
+      document.getElementById('buttonEnd').addEventListener('click', function(e) {
         console.log('Destroy');
         chat.destroy();
       });
     });
 
-//////////////////////
-window.addEventListener('DOMContentLoaded', function(){
-        document.querySelector('#my-awesome-el').innerHTML = new Date
-        console.log('loaded openchat');
-        roomName = 'onstituter/community';
-        roomName = getParameterByName('foo'); //// query string: ?foo=lorem&bar=&baz
-        console.log(roomName);
-        chat = new GitterChat({
-          room: roomName
-        });
-});
-//////////////////////
 
 //////////////////////
 function getParameterByName(name, url) {
