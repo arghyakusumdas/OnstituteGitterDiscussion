@@ -7,11 +7,13 @@
 
   <link href="../common.css" rel="stylesheet">
 </head>
-<body>
+<body onload="openGitterRoom()">
   <script>
+    function openGitterRoom() {
     ((window.gitter = {}).chat = {}).options = {
-      room: 'docker/docker'
+      room: 'onstituter/community'
     };
+    }
   </script>
   <script src="./sidecar.v1.js" async defer></script>
 </body>
