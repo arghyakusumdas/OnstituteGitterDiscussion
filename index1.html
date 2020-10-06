@@ -28,6 +28,8 @@
       document.querySelector('.js-create-chat-button').addEventListener('click', function(e) {
         console.log('Create');
         roomName = 'onstituter/community';
+        roomName = getParameterByName('foo'); //// query string: ?foo=lorem&bar=&baz
+        console.log(roomName);
         chat = new GitterChat({
           room: roomName
         });
@@ -38,6 +40,18 @@
         chat.destroy();
       });
     });
+
+//////////////////////
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+//////////////////////
   </script>
 </body>
 </html>
