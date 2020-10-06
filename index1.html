@@ -27,8 +27,9 @@
       var chat;
       document.querySelector('.js-create-chat-button').addEventListener('click', function(e) {
         console.log('Create');
+        roomName = 'onstituter/community';
         chat = new GitterChat({
-          room: 'gitterHQ/sidecar-demo'
+          room: roomName
         });
       });
 
